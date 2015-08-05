@@ -1,4 +1,4 @@
-# expanse_bundle_lib
+# Expanse Bundle Library
 This is a sub-module for the client application, as well as any asset-bundles the client may load. 
 
 ## Behavours
