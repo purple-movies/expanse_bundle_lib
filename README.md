@@ -2,7 +2,7 @@
 This is a sub-module for the client application, as well as any asset-bundles the client may load. 
 
 ## Behavours
-Behaviours in this reprository can be compiled into the the Expanse client, and then can be used/attached on Prefabs in asset-bundles loaded into an Expanse. 
+Behaviours in this reprository can be compiled into the the Expanse client, and then can be attached to Prefabs in asset-bundles loaded into an Expanse at run-time. 
 
 ## Asset Manifest
 This contains the asset-manifest structures the client uses to identify prefabs to instantiate in an expanse.
