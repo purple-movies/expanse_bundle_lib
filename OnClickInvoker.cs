@@ -3,8 +3,9 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public class OnClickInvoker : MonoBehaviour
+public class OnClickInvoker : NetworkBehaviour
 {
     [Serializable] public class TriggerEvent : UnityEvent<BaseEventData>
     { }
@@ -19,6 +20,20 @@ public class OnClickInvoker : MonoBehaviour
 
     protected OnClickInvoker()
     { }
+
+    #region SERVER
+    [Command] void CmdInvokeClickHandler()
+    {
+        RpcInvokeClickHandler();
+    }
+    #endregion
+
+    #region CLIENT
+    [ClientRpc] void RpcInvokeClickHandler()
+    {
+        OnPointerDown(null);
+    }
+    #endregion
 
     public List<Entry> triggers
     {
@@ -58,7 +73,9 @@ public class OnClickInvoker : MonoBehaviour
 
     void OnMouseDown()
     {
-        OnPointerDown(null);
+        //OnPointerDown(null);
+
+        CmdInvokeClickHandler();
     }
 
     private void Execute(EventTriggerType id, BaseEventData eventData)
