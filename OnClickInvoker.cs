@@ -21,19 +21,21 @@ public class OnClickInvoker : NetworkBehaviour
     protected OnClickInvoker()
     { }
 
-    #region SERVER
-    [Command] void CmdInvokeClickHandler()
-    {
-        RpcInvokeClickHandler();
-    }
-    #endregion
+    //#region SERVER
+    //[Command] void CmdInvokeClickHandler()
+    //{
+    //    Debug.LogError("SERVER invoking click handler !");
+    //    RpcInvokeClickHandler();
+    //}
+    //#endregion
 
-    #region CLIENT
-    [ClientRpc] void RpcInvokeClickHandler()
-    {
-        OnPointerDown(null);
-    }
-    #endregion
+    //#region CLIENT
+    //[ClientRpc] void RpcInvokeClickHandler()
+    //{
+    //    Debug.LogError("CLIENT invoking click handler !");
+    //    OnPointerDown(null);
+    //}
+    //#endregion
 
     public List<Entry> triggers
     {
@@ -71,12 +73,11 @@ public class OnClickInvoker : NetworkBehaviour
         Execute(EventTriggerType.PointerClick, eventData);
     }
 
-    void OnMouseDown()
-    {
-        //OnPointerDown(null);
-
-        CmdInvokeClickHandler();
-    }
+    //void OnMouseDown()
+    //{
+    //    Debug.LogError("GAMEOBJECT invoking click handler !");
+    //    CmdInvokeClickHandler();
+    //}
 
     private void Execute(EventTriggerType id, BaseEventData eventData)
     {
